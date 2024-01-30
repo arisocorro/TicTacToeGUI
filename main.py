@@ -4,14 +4,6 @@ from tkinter import messagebox
 from tkinter import Canvas
 import random
 
-# Fonts
-#   Elephant
-#   Niagara Solid
-
-# -------------------------------------------------------
-# Game Start Screen
-# -------------------------------------------------------
-
 # --- COLORS CONSTANTS -----
 BACKGROUND = '#2b3e4f'
 WHITE      = '#fefefa'
@@ -22,6 +14,10 @@ RED        = '#d9544d'
 YELLOW     = '#eeae4c'
 BLACK      = '#191919'
 PURPLE     = '#9632c7'
+
+# -------------------------------------------------------
+# Game Start Screen
+# -------------------------------------------------------
 
 class Grid:
 
