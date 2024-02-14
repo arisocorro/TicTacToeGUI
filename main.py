@@ -260,7 +260,6 @@ class GameBoard:
 
         options = self.emptySpaces()
         row, col = random.choice(options)
-        print(f'This is the random choice: {row}, {col} and the character is {oppChar}')
         if self.buttons[row][col]['text'] == "" and self.checkWinner() is False:
             self.buttons[row][col]['text'] = oppChar
             self.buttons[row][col]['fg'] = BLUE
@@ -335,11 +334,9 @@ class GameBoard:
     def bestMoveConverstion(self, move):
         row = int(move /3)
         col = int(move %3)
-        print(f"Row: {row}, Col: {col} ")
         return row,col
 
     def insertOppVal(self,insertVal):
-        print(insertVal)
         row = insertVal[0]
         col = insertVal[1]
 
