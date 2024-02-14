@@ -3,17 +3,22 @@
 An implementation of MinMax AI algorithm on Tic-Tac-Toe with Tkinter GUI 
 
 ![Screenshot 2024-01-30 135740](https://github.com/arisocorro/TicTacToeGUI/assets/158087556/2926a957-94aa-4d75-a02c-648583db8fe9)
+
 ##Introduction
+
 For this project I decided to design and develop a GUI for Tic-Tac-Toe. I used tkinter due to its simplicity since my focus for this project was the implementation of the minmax AI algorithm. To solve games using this AI, we first need to map out all potential moves for the AI as well as the human player.  I used a tree data structure, where each level of the tree corresponds with whose turn it is and each node being the state of the board after the play. Alternating between the player and the AI until the game’s conclusion in either a win, a loss or a tie from the perspective of the AI.
  In my version of the game, X doesn’t necessarily have you go first, because I didn’t know that was a rule, and when I asked by friends, they concurred. In that case, the root node will always be the human player. Every time the player places an X or O on the grid, that becomes the new root node from which all further nodes will stem from. We call these nodes the “children” of the root or “parent” node. This is a recursive algorithm, meaning that each of the children with have their own set of children until it reaches the end state of the game where it will return the conclusion: whether the AI wins, loses, or ties. The status of the conclusion in Tic-Tac-Toe is determined by whether one of the players gets a line of three and wins, or the board is full without space for another move hence resulting in a tie. 
 
-##Why MinMax?
+## Why MinMax?
+
 Minmax is an artificial intelligence commonly applied to 2 player games, since by nature the algorithm assumes that two parties are working towards opposite goals. Games such as Chess, Checkers, Connect Four, and Tic-Tac-Toe are zero-sum games where there is one winner, denoted as (+1), one loser (-1) and in some cases a tie (0). 
 Additionally, Tic-Tac-Toe, Checkers and Connect Four are all solved games. A solved game in this context is a game in which the outcome (win loss or tie) can be predicted from any position, assuming that both players are playing optimally. Some games are simple to solved like Tic-Tac-Toe and others are very hard to solve like checkers; being solved in 2007 after a 19-year project. To put that into context Tic-Tac-Toe was solved in 1980. 
 Due to Tic-Tac-Toe’s simplicity, a full game of Tic-Tac-Toe can be mapped out on a tree with only 549,946 nodes making the Minmax algorithm suitable for the scope of this project. More complex games with higher levels of depth, such as Chess which have around 10100 (10 followed by 100 zeros) nodes making calculating the next moved expensive, time and space wise. For these kinds of problems, we could use Alpha-Beta Pruning, which allows us to cut of certain branches of our tree that we deem unsuitable while it searches for a solution.  
 
-##Implementation
-#opp_MinMax
+## Implementation
+
+# opp_MinMax
+
 ![Screenshot 2024-02-03 154730](https://github.com/arisocorro/TicTacToeGUI/assets/158087556/3ac56739-52ef-4147-bc80-39e2a3381075)
 
 This block is the foundation for the minmax algorithm. First, we initialize the AI’s score as -100. This is an arbitrary number; since the AI is maximizing, the worst score the AI could get would be the initial value. I could have imported the inf from the math library but I decided that -100 would function the same and save on space. 
@@ -22,7 +27,7 @@ Once all the necessary variables are initialized, we begin the minmax for loop. 
 Minmax takes in board and a boolean value called isMaximizing; returning a score based on the success of that move. IsMaximizing is used to determine which players turn is it. As mentioned before, the algorithm assumes that two parties are working towards opposite goals, and it’s the AI job to maximize its score while minimizing the opponents score, the human player. We have it as false because it would be the human player’s turn. 
 After a score has been returned, it reverts the board back to how it was at the start, and then compares the new score with the bestScore. If it finds that the new score is greater, it saves that move as bestMove and that score as bestScore. After the AI has gone over every available space, the best move will then be displayed on the button grid by passing the variable to insertOppVal.
 
-#Minmax algorithm
+# Minmax algorithm
 
 ![Screenshot 2024-02-03 154754](https://github.com/arisocorro/TicTacToeGUI/assets/158087556/389fd1ad-044a-422b-80d6-e9e050a8aead)
 
