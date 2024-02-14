@@ -15,6 +15,7 @@ Due to Tic-Tac-Toe’s simplicity, a full game of Tic-Tac-Toe can be mapped out 
 ##Implementation
 #opp_MinMax
 ![Screenshot 2024-02-03 154730](https://github.com/arisocorro/TicTacToeGUI/assets/158087556/3ac56739-52ef-4147-bc80-39e2a3381075)
+
 This block is the foundation for the minmax algorithm. First, we initialize the AI’s score as -100. This is an arbitrary number; since the AI is maximizing, the worst score the AI could get would be the initial value. I could have imported the inf from the math library but I decided that -100 would function the same and save on space. 
 After, we initialize the bestMove as 0,0. The two variables represent row and column respectively, since I will be displaying this on my button grid of my GUI. Finally, we take a snapshot of the board using the boardState() function I will go over bellow, calling it board for simplicity. 
 Once all the necessary variables are initialized, we begin the minmax for loop. This works by taking the index and the char from the board array and checking whether its empty. If its empty, then we change it to the opposing character (the one the player didn’t choose in the character selection screen) and call minmax(). 
@@ -22,17 +23,23 @@ Minmax takes in board and a boolean value called isMaximizing; returning a score
 After a score has been returned, it reverts the board back to how it was at the start, and then compares the new score with the bestScore. If it finds that the new score is greater, it saves that move as bestMove and that score as bestScore. After the AI has gone over every available space, the best move will then be displayed on the button grid by passing the variable to insertOppVal.
 
 #Minmax algorithm
+
 ![Screenshot 2024-02-03 154754](https://github.com/arisocorro/TicTacToeGUI/assets/158087556/389fd1ad-044a-422b-80d6-e9e050a8aead)
+
 Firstly, we check if the game as concluded by checking if a player has won or if there are no placed left of the board. If the game is still on, IsMaximizing will determine the next move. The code inside the if statements resembles the previous segment, since is a recursive algorithm. In this instance, Opp_minmax is the parent node and the minmax method is generating all the possible children and returning 1,-1, or 0 depending on how the game ends. 
 Notice that when it isn’t maximizing or minimizing it is flipped. Instead of bestScore being -100, its 100 and if the score is less than bestScore then we would update the bestScore variable. 
 
 #CheckWhoWin and checkDraw
+
 ![Screenshot 2024-02-03 154808](https://github.com/arisocorro/TicTacToeGUI/assets/158087556/a7e2660f-bb52-4061-952f-584013172c94)
+
 This algorithm takes in the board and a player char. For this I found it simple to use a 2D array filled with all the possible win conditions and then iterated through the array and compare each position to the player char. If a player meets the requirements for the win condition, then it returns true. This allows for cleaner code instead of just listing out a bunch of if statements making it easier to debug. 
 checkDraw takes an input the board and checks if there are no empty spaces left, denoted by the ‘0’
 
 #BestMoveConverstion
+
 ![Screenshot 2024-02-03 154922](https://github.com/arisocorro/TicTacToeGUI/assets/158087556/2e2c6269-fe01-42ad-810f-7bedd6bdb2d6)
+
 I noticed that for my grid of 3x3 I could use a simple division and mod to get the exact coordinates to display on the GUI. The reason I have them as two variables instead of just putting them together with the return was for readability and debugging. While more efficient it could be confusing if someone wanted to build upon my code. 
 
 #Color Use 
